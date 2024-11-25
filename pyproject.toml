@@ -1,0 +1,64 @@
+[project]
+name = "python-base-project"
+version = "0.1.0"
+description = "Type here the description for your project."
+readme = "README.md"
+requires-python = "~=3.11"
+dependencies = [
+    "loguru>=0.7.2",
+    "pydantic>=2.9.2",
+    "python-dotenv>=1.0.1",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "black>=24.10.0",
+    "isort>=5.13.2",
+    "mypy>=1.13.0",
+    "pyright>=1.1.388",
+    "pytest>=8.3.3",
+    "ruff>=0.7.1",
+    "typos>=1.26.8",
+]
+
+[tool.ruff]
+src = ["app"]
+line-length = 120
+show-fixes = true
+unsafe-fixes = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["COM812", "ISC001", "TCH001", "G002"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 120
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pylint]
+max-args = 10
+
+[tool.pyright]
+include = ["src"]
+exclude = ["**/.venv", "**/__pycache__"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+plugins = "pydantic.mypy"
+enable_error_code = ["union-attr", "valid-type"]
+
+[tool.isort]
+py_version=311
+multi_line_output = 3
+line_length = 120
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
