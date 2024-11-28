@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # python_base_project
 A base python project configured with most commonly used modules for quality
-=======
+
 # project overview
 
 To use this project in your environment, please rename the file config_template.py to config.py and replace the values.
