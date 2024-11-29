@@ -3,21 +3,20 @@ name = "python-base-project"
 version = "0.1.0"
 description = "Type here the description for your project."
 readme = "README.md"
-requires-python = "~=3.11"
+requires-python = "==3.11.9"
 dependencies = [
-    "loguru>=0.7.2",
-    "python-dotenv>=1.0.1",
+    "python-dotenv==1.0.1",
 ]
 
 [tool.uv]
 dev-dependencies = [
-    "black>=24.10.0",
-    "isort>=5.13.2",
-    "mypy>=1.13.0",
-    "pyright>=1.1.388",
-    "pytest>=8.3.3",
-    "ruff>=0.7.1",
-    "typos>=1.26.8",
+    "black==24.10.0",
+    "isort==5.13.2",
+    "mypy==1.13.0",
+    "pyright==1.1.388",
+    "pytest==8.3.3",
+    "ruff==0.7.1",
+    "typos==1.26.8",
 ]
 
 [tool.ruff]
