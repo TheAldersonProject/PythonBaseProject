@@ -1,7 +1,7 @@
 # Makefile
 
 # PYTHON
-PYTHON = /usr/local/bin/python3.11
+PYTHON = python3 #/usr/local/bin/python3.11
 PIP = $(PYTHON) -m pip
 RUFF_PY_VERSION = py311
 UV_PY_VERSION = --python 3.11
@@ -45,14 +45,14 @@ install:
 
 # Format code
 format:
-	black $(SOURCE_PY_FILES) $(BLACK_ARGS) --config pyproject.toml
-	$(RUFF) format $(SOURCE_PY_FILES) $(RUFF_ARGS)
+	black $(SOURCE_DIR) $(BLACK_ARGS) --config pyproject.toml
+	$(RUFF) format $(SOURCE_DIR) $(RUFF_ARGS)
 
 # Lint code
 lint:
-	black --check $(SOURCE_PY_FILES) $(BLACK_ARGS) --config pyproject.toml
-	$(RUFF) check $(SOURCE_PY_FILES) $(RUFF_ARGS) --fix
-	pyright $(SOURCE_PY_FILES) $(PYRIGHT_ARGS)
+	black --check $(SOURCE_DIR) $(BLACK_ARGS)
+	$(RUFF) check $(SOURCE_DIR) $(RUFF_ARGS) --fix
+	pyright $(SOURCE_DIR) $(PYRIGHT_ARGS)
 
 # Run tests
 test:
