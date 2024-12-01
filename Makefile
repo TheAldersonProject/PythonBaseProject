@@ -1,10 +1,11 @@
 # Makefile
 
 # PYTHON
-PYTHON = python3 #/usr/local/bin/python3.11
+PYTHON = python3
 PIP = $(PYTHON) -m pip
 RUFF_PY_VERSION = py311
-UV_PY_VERSION = --python 3.11
+UV_PY_VERSION = --python 3.11.9
+UV_ENV_ARGS = --allow-existing
 
 # BLACK
 BLACK_ARGS = --config ./pyproject.toml
@@ -14,7 +15,7 @@ RUFF = ruff --config ./pyproject.toml
 RUFF_ARGS = --target-version $(RUFF_PY_VERSION)  -n
 
 # PYRIGHT
-PYRIGHT_ARGS = --project pyproject.toml
+PYRIGHT_ARGS = --project pyproject.toml --pythonversion 3.11.9 --stats
 
 # PROJECT
 SOURCE_DIR = ./src
@@ -40,12 +41,13 @@ help:
 install:
 	$(PIP) install --upgrade pip
 	$(PIP) install -r requirements.txt
-	uv venv $(UV_PY_VERSION)
+	uv venv $(UV_PY_VERSION) $(UV_ENV_ARGS)
 	uv sync
+	uv run pre-commit install
 
 # Format code
 format:
-	black $(SOURCE_DIR) $(BLACK_ARGS) --config pyproject.toml
+	black $(SOURCE_DIR) $(BLACK_ARGS)
 	$(RUFF) format $(SOURCE_DIR) $(RUFF_ARGS)
 
 # Lint code
@@ -63,7 +65,6 @@ clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
 	find . -type f -name "*.pyc" -delete
 	rm -rf .pytest_cache
-	rm -rf .mypy_cache
 
 # run the phony as bellow
 build:
