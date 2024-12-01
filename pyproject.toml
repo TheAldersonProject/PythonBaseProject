@@ -5,6 +5,7 @@ description = "Type here the description for your project."
 readme = "README.md"
 requires-python = "==3.11.9"
 dependencies = [
+    "pre-commit>=4.0.1",
     "python-dotenv==1.0.1",
 ]
 
@@ -12,8 +13,7 @@ dependencies = [
 dev-dependencies = [
     "black==24.10.0",
     "isort==5.13.2",
-    "mypy==1.13.0",
-    "pyright==1.1.388",
+    "pyright>=1.1.388",
     "pytest==8.3.3",
     "ruff==0.7.1",
     "typos==1.26.8",
@@ -42,15 +42,30 @@ convention = "google"
 max-args = 10
 
 [tool.pyright]
-include = ["src"]
-exclude = ["**/.venv", "**/__pycache__"]
-
-[tool.mypy]
-python_version = "3.11"
-warn_return_any = true
-warn_unused_configs = true
-plugins = "pydantic.mypy"
-enable_error_code = ["union-attr", "valid-type"]
+include = ["src"]  # Adjust this to your source directory
+exclude = [
+    "**/.venv",
+    "**/__pycache__",
+    "**/tests"
+]
+typeCheckingMode = "strict"  # For strictest type checking
+reportMissingTypeStubs = true
+reportUnknownParameterType = true
+reportUnknownArgumentType = true
+reportUnknownLambdaType = true
+reportUnknownVariableType = true
+reportUnknownMemberType = true
+reportMissingTypeArgument = true
+reportInvalidTypeVarUse = true
+reportUnnecessaryCast = true
+reportUnnecessaryComparison = true
+reportUnnecessaryContains = true
+reportCallInDefaultInitializer = true
+reportPropertyTypeMismatch = true
+reportWildcardImportFromLibrary = true
+reportUntypedFunctionDecorator = true
+reportUntypedClassDecorator = true
+reportUntypedBaseClass = true
 
 [tool.isort]
 py_version=311
