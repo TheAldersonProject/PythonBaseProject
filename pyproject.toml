@@ -68,6 +68,9 @@ reportWildcardImportFromLibrary = true
 reportUntypedFunctionDecorator = true
 reportUntypedClassDecorator = true
 reportUntypedBaseClass = true
+useLibraryCodeForTypes = true
+venvPath = "."
+venv = ".venv"
 
 [tool.black]
 line-length = 120
