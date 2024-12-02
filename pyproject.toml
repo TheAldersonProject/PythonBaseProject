@@ -72,3 +72,10 @@ reportUntypedBaseClass = true
 [tool.black]
 line-length = 120
 target-version = ['py311']
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+split-on-trailing-comma = true
+relative-imports-order = "closest-to-furthest"
+force-single-line = false
+force-wrap-aliases = false
