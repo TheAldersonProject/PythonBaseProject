@@ -14,7 +14,6 @@ dependencies = [
 [tool.uv]
 dev-dependencies = [
     "black==24.10.0",
-    "isort==5.13.2",
     "pyright>=1.1.388",
     "pytest==8.3.3",
     "ruff==0.7.1",
@@ -69,11 +68,6 @@ reportWildcardImportFromLibrary = true
 reportUntypedFunctionDecorator = true
 reportUntypedClassDecorator = true
 reportUntypedBaseClass = true
-
-[tool.isort]
-py_version=311
-multi_line_output = 3
-line_length = 120
 
 [tool.black]
 line-length = 120
