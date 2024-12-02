@@ -18,7 +18,7 @@ RUFF_ARGS = --target-version $(RUFF_PY_VERSION)  -n
 PYRIGHT_ARGS = --project pyproject.toml --pythonversion 3.11.9 --stats
 
 # PROJECT
-SOURCE_DIR = ./src
+SOURCE_DIR = ./app
 SOURCE_PY_FILES = $(SOURCE_DIR)/**/*.py
 
 TEST_DIR = ./tests
@@ -47,18 +47,18 @@ install:
 
 # Format code
 format:
-	black $(SOURCE_DIR) $(BLACK_ARGS)
-	$(RUFF) format $(SOURCE_DIR) $(RUFF_ARGS)
+	uv run black $(SOURCE_DIR) $(BLACK_ARGS)
+	uv run $(RUFF) format $(SOURCE_DIR) $(RUFF_ARGS)
 
 # Lint code
 lint:
-	black --check $(SOURCE_DIR) $(BLACK_ARGS)
-	$(RUFF) check $(SOURCE_DIR) $(RUFF_ARGS) --fix
-	pyright $(SOURCE_DIR) $(PYRIGHT_ARGS)
+	uv run black --check $(SOURCE_DIR) $(BLACK_ARGS)
+	uv run $(RUFF) check $(SOURCE_DIR) $(RUFF_ARGS) --fix
+	uv run pyright $(SOURCE_DIR) $(PYRIGHT_ARGS)
 
 # Run tests
 test:
-	python -m pytest $(TEST_DIR)
+	uv run python3 -m pytest $(TEST_DIR)
 
 # Clean build artifacts
 clean:
