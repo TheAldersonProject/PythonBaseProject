@@ -1,111 +1,106 @@
-# python_base_project
-A base python project configured with most commonly used modules for quality
+# Python Base Project
 
-# project overview
+## Overview
 
-To use this project in your environment, please rename the file config_template.py to config.py and replace the values.
-It will enable the deployment of all resources in AWS account using the values defined by you!!!
+A standardized Python project template implementing industry best practices for code quality, type safety, and development workflows. This template provides a structured environment with automated build processes and pre-configured development tools.
 
-This project is able to create:
-- S3 data lake buckets
-- Athena workgroups
-- Athena bucket
-- Glue databases
-- Crawlers for the first dl layer
-- Lake formation setup
-- Lake formation grants
-- Lake formation tags creation
-- Global tags
+## Technical Specifications
 
-Before try to run the CDK synth, diff, deploy or any other command, please configure your environment variables.
-The variables that you need to set are:
-- `CDK_DEFAULT_ACCOUNT`
-- `CDK_DEFAULT_ENVIRONMENT`
-- `CDK_DEFAULT_REGION`
+### Core Requirements
 
-# Welcome to your CDK Python project!
+- Python 3.11.9
+- UV Package Manager
+- Make (for build automation)
 
-This project is set up like a standard Python project. The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory. To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+### Quality Assurance Tools
 
-To manually create a virtualenv on macOS and Linux:
+- **Code Formatting & Linting**
+  - Black: Code formatting
+  - Ruff: Comprehensive linting and formatting
+  - Pyright: Static type checking
+  - Pre-commit hooks
 
-```
-$ python3 -m venv .venv
-```
+### Repository Structure
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+repository/
+├── src/                    # Source code directory
+├── tests/                  # Test suite
+├── .env                    # Environment configuration
+├── .gitignore             # Git exclusion patterns
+├── .pre-commit-config.yaml # Pre-commit hook configuration
+├── Makefile               # Build automation
+├── pyproject.toml         # Project and tool configuration
+└── README.md              # Project documentation
 
-```
-$ source .venv/bin/activate
-```
 
-If you are a Windows platform, you would activate the virtualenv like this:
+## Build System
 
-```
-% .venv\Scripts\activate.bat
-```
+The project uses Make for build automation and development workflows.
 
-Once the virtualenv is activated, you can install the required dependencies.
+### Run `make help` to see the available commands
 
-```
-$ pip install -r requirements.txt
-```
-
-At this point you can now synthesize the CloudFormation template for this code.
-
-```
-$ cdk synth
-```
-
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
-
-## Useful commands
-
-* `cdk ls`          list all stacks in the app
-* `cdk synth`       emits the synthesized CloudFormation template
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk docs`        open CDK documentation
-
-https://docs.aws.amazon.com/cdk/v2/guide/home.html
-
-pre req:
-    * https://docs.aws.amazon.com/cdk/v2/guide/prerequisites.html
-
-first steps:
-    * https://docs.aws.amazon.com/cdk/v2/guide/hello_world.html
-
-npm install -g aws-cdk@X.YY.Z
-npm view <package-name> version
-
-on the project folder:
-* cdk init app --language python
-
-if need be to uninstall:
-* npm uninstall -g aws-cdk
-
-Configure your AWS environment
-1. aws sts get-caller-identity --query "Account" --output text
-2. named profile: aws sts get-caller-identity --profile your-profile-name --query "Account" --output text
-3. aws configure get region --profile your-profile-name
-
-Bootstrap your AWS environment
 ```bash
-cdk bootstrap
-```
+    make help
+  ```
 
-List the CDK stacks in your app
+### Build Configuration
+
+#### Python Settings
+* Python Version: 3.11.9
+
+#### Tool Arguments
+* Black: Configured via pyproject.toml
+* Ruff: Target version py311
+* Pyright: Python 3.11.9 with statistics
+
+
+### Development Setup
+
+1. Clone Repository
+    ```bash
+      git clone https://github.com/organization/python-base-project
+      cd python-base-project
+     ```
+2. Install Dependencies as per [pyproject.toml]([pyproject.toml](pyproject.toml)) configuration file.
+    ```bash
+    make install
+    ```
+
+## Development Workflow
+
+### Code Quality Enforcement
+
+The project enforces code quality through automated tools:
+1. Formatting
+   * Applies Black formatting
+   * Runs Ruff formatter
+   * Organizes imports
+   ```bash
+    make format
+    ```
+
+2. Linting
+	* Verifies Black formatting
+	* Runs Ruff checks
+	* Performs Pyright type checking
+    ```bash
+    make lint
+    ```
+
+3. Testing
+    * Executes pytest suite
+   ```bash
+    make test
+    ```
+## Complete Build Process
+To run the entire quality assurance pipeline
+
 ```bash
-cdk list
+    make build
 ```
-
-Enjoy!
->>>>>>> master
+### This command executes:
+1. Clean build artifacts
+2. Install dependencies
+3. Format code
+4. Run linters
+5. Execute tests
