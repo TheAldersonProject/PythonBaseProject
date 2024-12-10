@@ -3,8 +3,8 @@
 # PYTHON
 PYTHON = python3
 PIP = $(PYTHON) -m pip
-RUFF_PY_VERSION = py311
-UV_PY_VERSION = --python 3.11.9
+RUFF_PY_VERSION = py312
+UV_PY_VERSION = --python 3.12
 UV_ENV_ARGS = --allow-existing
 
 # BLACK
@@ -15,7 +15,7 @@ RUFF = ruff --config ./pyproject.toml
 RUFF_ARGS = --target-version $(RUFF_PY_VERSION)  -n
 
 # PYRIGHT
-PYRIGHT_ARGS = --project pyproject.toml --pythonversion 3.11.9 --stats
+PYRIGHT_ARGS = --project pyproject.toml --pythonversion 3.12 --stats
 
 # PROJECT
 SOURCE_DIR = ./app

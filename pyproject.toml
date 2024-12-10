@@ -1,24 +1,29 @@
 [project]
-name = "python-base-project"
+name = "XXXXXX"
+authors = [
+  {email = "thiago@thir.info"},
+  {name = "Thiago Dias"}
+]
 version = "0.1.0"
 description = "Type here the description for your project."
+url = "https://github.com/TheAldersonProject/PythonBaseProject"
 readme = "README.md"
-requires-python = "==3.11.9"
+license = {file = "LICENSE"}
+requires-python = "~=3.12"
 dependencies = [
-    "pre-commit>=4.0.1",
-    "python-dotenv==1.0.1",
     "setuptools>=75.6.0",
     "wheel>=0.45.1",
 ]
+package-dir = "app"
 
 [tool.uv]
 dev-dependencies = [
-    "black==24.10.0",
+    "black>=24.10.0",
     "pyright>=1.1.388",
-    "pytest==8.3.3",
-    "ruff==0.7.1",
-    "typos==1.26.8",
-    "pre-commit"
+    "pytest>=8.3.3",
+    "ruff>=0.7.1",
+    "typos>=1.26.8",
+    "pre-commit>=4.0.1",
 ]
 
 [tool.ruff]
@@ -29,7 +34,7 @@ unsafe-fixes = true
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["COM812", "ISC001", "TCH001", "G002"]
+ignore = ["COM812", "ISC001", "TCH001", "G002", "G004"]
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -48,9 +53,11 @@ include = ["app"]  # Adjust this to your source directory
 exclude = [
     "**/.venv",
     "**/__pycache__",
-    "**/tests"
+    "**/tests",
+    "./examples",
+    "./typings"
 ]
-typeCheckingMode = "strict"  # For strictest type checking
+typeCheckingMode = "strict"
 reportMissingTypeStubs = true
 reportUnknownParameterType = true
 reportUnknownArgumentType = true
@@ -71,6 +78,7 @@ reportUntypedBaseClass = true
 useLibraryCodeForTypes = true
 venvPath = "."
 venv = ".venv"
+applyFixes = true
 
 [tool.black]
 line-length = 120
